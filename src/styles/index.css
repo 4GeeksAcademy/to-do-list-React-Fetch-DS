@@ -1,14 +1,13 @@
-
 body {
     display: flex;
     justify-content: center;
     background: whitesmoke;
-    font-family: 'Times New Roman';
 }
 
 .to-do-container {
     margin-top: 30px;
     min-width: 500px;
+    font-family: 'Times New Roman';
 }
 
 .title {
@@ -32,6 +31,14 @@ body {
     padding: 0px 10px;
 }
 
+input:focus {
+    outline: none;
+}
+
+input:focus::placeholder {
+    color: transparent;
+}
+
 .btn-To-Do {
     width: 30%;
     min-height: 50px;
@@ -40,6 +47,10 @@ body {
     color: rgba(0, 0, 0, 0.7);
     background: rgba(173, 216, 230, 0.1);
     margin: 5px 0;
+}
+
+.btn-To-Do:active {
+    border: rgba(173, 216, 230, 0.5) 2px solid;
 }
 
 .notes {
@@ -80,35 +91,85 @@ h6 {
 
 .letter {
     background: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     margin: 26px auto 0;
     max-width: 550px;
     min-height: 300px;
     padding: 24px;
     position: relative;
     width: 80%;
-  }
+}
 
-  .letter:before, .letter:after {
+.letter:before,
+.letter:after {
     content: "";
     height: 98%;
     position: absolute;
     width: 100%;
     z-index: -1;
-  }
-  
-  .letter:before {
+}
+
+.letter:before {
     background: #fafafa;
-    box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     left: -5px;
     top: 4px;
     transform: rotate(-2.5deg);
-  }
+}
 
-  .letter:after {
+.letter:after {
     background: #f6f6f6;
-    box-shadow: 0 0 3px rgba(0,0,0,0.2);
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
     right: -3px;
     top: 1px;
     transform: rotate(1.4deg);
-  }
+}
+
+.container-username {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.input-username {
+    border: rgba(173, 216, 230, 0.5) 1px solid;
+    width: 30%;
+    padding: 6px 10px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.submit-username {
+    width: 30%;
+    min-height: 45px;
+    border: rgba(173, 216, 230, 0.5) 1px solid;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(173, 216, 230, 0.1);
+    margin: 5px 10px;
+}
+
+.submit-username:active {
+    border: rgba(173, 216, 230, 0.5) 2px solid;
+}
+
+.btn-delete-all {
+    width: 50%;
+    min-height: 45px;
+    border: rgba(173, 216, 230, 0.5) 1px solid;
+    font-size: 18px;
+    color: rgba(0, 0, 0, 0.7);
+    background: rgba(173, 216, 230, 0.2);
+    margin: 5px 10px;
+    padding: 5px;
+}
+
+.btn-delete-all:active {
+    border: rgb(137, 178, 192) 1px solid;
+}
+
+.container-btn-delete {
+    display: flex;
+    justify-content: center;
+    margin: 25px;
+}

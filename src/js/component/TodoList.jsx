@@ -1,109 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 const TodoList = () => {
 
+	// Variables para agregar y quitar todos, con su respectivo index
 	const [todos, setTodos] = useState([]);
-	const [userTodos, setUserTodos] = useState([]);
-	const [task, setTask] = useState("");
+	const [task, setTask] = useState("")
 	const [noteIndex, setNoteIndex] = useState(0);
 
-	let usersURL = 'https://playground.4geeks.com/apis/fake/todos/user/jaac';
+	// Variables para controlar usernames
+	const [username, setUsername] = useState("");
 
-	useEffect(() => {
-		const fetchTodos = async () => {
-			const res = await fetch(usersURL);
-			const data = await res.json();
-			setTodos(data);
-		}
-
-		fetchTodos();
-	}, [])
-
-	/* GET USER FROM API */
-	const getUser = async () => {
-		try {
-			let response = await fetch(usersURL);
-			let data = await response.json();
-
-			if (response.ok) {
-				setUserTodos(data);
-			} else {
-				await createUser();
-			}
-
-		} catch (error) {
-			console.log(error);
+	const addTodos = () => {
+		const newTodos = [...todos]
+		if (task === "") {
+			return;
+		} else {
+			newTodos.push(task)
+			setTodos(newTodos)
+			setTask("")
+			setNoteIndex(noteIndex + 1)
 		}
 	}
 
-	/* CREATE USER IN API */
-	const createUser = async () => {
-		try {
-			let response = await fetch(usersURL, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-				body: JSON.stringify([]),
-			});
+	const deleteTodos = (index) => {
+		const newTodos = [...todos]
+		newTodos.splice(index, 1)
+		setTodos(newTodos)
+		setNoteIndex(noteIndex - 1)
 
-			let data = await response.json();
-			setUserTodos(data);
-
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-	/* UPDATE USER TODOS IN API */
-	const updateUserTodos = async (todos) => {
-		try {
-			let response = await fetch(usersURL, {
-				method: 'PUT',
-				headers: { 'Content-Type': 'application/json' },
-				body: JSON.stringify(todos),
-			});
-
-			if (response.ok) {
-				setUserTodos(todos);
-			}
-
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-	/* DELETE USER AND TODOS FROM API */
-	const deleteUser = async () => {
-		try {
-			let response = await fetch(usersURL, {
-				method: 'DELETE'
-			});
-
-			if (response.ok) {
-				setUserTodos([]);
-			}
-
-		} catch (error) {
-			console.log(error);
-		}
-	}
-
-	/* ADD TODO */
-	const addTodo = () => {
-		const newTodos = [...userTodos, task];
-		setUserTodos(newTodos);
-		setTask("");
-		setNoteIndex(noteIndex + 1);
-		updateUserTodos(newTodos);
-	}
-
-	/* DELETE TODO */
-	const deleteTodo = (index) => {
-		const newTodos = userTodos.filter((_, i) => i !== index);
-		setUserTodos(newTodos);
-		setNoteIndex(noteIndex - 1);
-		updateUserTodos(newTodos);
 	}
 
 	return (
@@ -111,37 +35,28 @@ const TodoList = () => {
 			{/* Input para añadir notas */}
 
 			<div className="container-input">
-				<input
-					className="input-To-Do"
-					placeholder="What needs to be done?"
-					type="text"
-					value={task}
-					onChange={(e) => setTask(e.target.value)}
-				/>
-				<button
-					className='btn-To-Do'
-					onClick={addTodo}>
-					Add Task
-				</button>
+				<input className="input-To-Do" placeholder="What needs to be done?" type="text" value={task} onChange={(e) => setTask(e.target.value)} />
+				<button className='btn-To-Do' onClick={addTodos}>Add Task</button>
 			</div>
 
 			{/* contenedor notas */}
 			<div className="notes">
 				{
 					// notas
-					userTodos.map((task, index) => {
+					todos.length > 0 &&
+					todos.map((task, index) => {
 						return (
-							<div className="items" key={index}>
-								<div className='note'>{task}</div>
+							<div className="items">
+								<div key={index} className='note'>{task}</div>
 								<i
-									className="fa-regular fa-circle-xmark"
-									onClick={() => deleteTodo(index)}
-								/>
+									class="item--right fa-regular fa-circle-xmark"
+									onClick={() => deleteTodos(index)}
+								></i>
 							</div>
 						)
 					})
-				}
 
+				}
 				<h6 className="note-index">{noteIndex} item left</h6>
 
 			</div>
