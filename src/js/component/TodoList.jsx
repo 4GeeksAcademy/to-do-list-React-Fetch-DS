@@ -1,39 +1,67 @@
 import React, { useState } from "react";
+import InputName from "./inputName"
+import DeleteAll from "./DeleteAll"
 
 const TodoList = () => {
 
-	// Variables para agregar y quitar todos, con su respectivo index
-	const [todos, setTodos] = useState([]);
-	const [task, setTask] = useState("")
+	/* ---- Variables para agregar y quitar todos, con su respectivo index ---- */
+
+	const [todos, setTodos] = useState([]); // Arreglo de todas las tasks/todos
+	const [task, setTask] = useState(""); // Tarea que se inyecta en el HTML
 	const [noteIndex, setNoteIndex] = useState(0);
 
-	// Variables para controlar usernames
+	/* ---- Variables para controlar usernames ---- */
+
 	const [username, setUsername] = useState("");
+	const [usernameInput, setUsernameInput] = useState("");
+	let usersURL = 'https://playground.4geeks.com/apis/fake/todos/user/';
 
-	const addTodos = () => {
-		const newTodos = [...todos]
-		if (task === "") {
-			return;
-		} else {
-			newTodos.push(task)
-			setTodos(newTodos)
-			setTask("")
-			setNoteIndex(noteIndex + 1)
+	/* ---- // GET DATA // ---- */
+	const getData = () => {
+
+	}
+
+	/* ---- // POST DATA [username] // ---- */
+	const postData = () => {
+
+	}
+
+	/* ---- // PUT DATA [New list && add todo] // ---- */
+	const putData = () => {
+
+	}
+
+	/* ---- // DELETE DATA [tasks] // ---- */
+	const deleteTodo = () => {
+
+	}
+
+	/*
+		// ---- Añadir task en un nuevo arreglo de todos
+		const addTodos = () => {
+			const newTodos = [...todos]
+			if (task === "") {
+				return;
+			} else {
+				newTodos.push(task)
+				setTodos(newTodos)
+				setTask("")
+				setNoteIndex(noteIndex + 1)
+			}
 		}
-	}
-
-	const deleteTodos = (index) => {
-		const newTodos = [...todos]
-		newTodos.splice(index, 1)
-		setTodos(newTodos)
-		setNoteIndex(noteIndex - 1)
-
-	}
+	
+		// ---- Eliminar task en un nuevo arreglo de todos 
+		const deleteTodos = (index) => {
+			const newTodos = [...todos]
+			newTodos.splice(index, 1)
+			setTodos(newTodos)
+			setNoteIndex(noteIndex - 1)
+		}
+	*/
 
 	return (
 		<>
-			{/* Input para añadir notas */}
-
+			{/* Input para añadir notas y enviar su información */}
 			<div className="container-input">
 				<input className="input-To-Do" placeholder="What needs to be done?" type="text" value={task} onChange={(e) => setTask(e.target.value)} />
 				<button className='btn-To-Do' onClick={addTodos}>Add Task</button>
@@ -42,7 +70,7 @@ const TodoList = () => {
 			{/* contenedor notas */}
 			<div className="notes">
 				{
-					// notas
+					// Recorrer arreglo de todos para añadir tasks "independientes"
 					todos.length > 0 &&
 					todos.map((task, index) => {
 						return (
@@ -57,6 +85,8 @@ const TodoList = () => {
 					})
 
 				}
+
+				{/* Contador de tasks */}
 				<h6 className="note-index">{noteIndex} item left</h6>
 
 			</div>

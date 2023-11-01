@@ -9,3 +9,24 @@ Después de que la lista se carga vacía por primera vez (componentDidMount): de
 Cuando se agrega una nueva tarea: debes PONER (PUT) la nueva lista en el servidor.
 
 Cuando se elimina una tarea: Debes PONER (PUT) la nueva lista en el servidor.
+
+	/* ---- Añadir task en un nuevo arreglo de todos ---- */
+	const addTodos = () => {
+		const newTodos = [...todos]
+		if (task === "") {
+			return;
+		} else {
+			newTodos.push(task)
+			setTodos(newTodos)
+			setTask("")
+			setNoteIndex(noteIndex + 1)
+		}
+	}
+
+	/* ---- Eliminar task en un nuevo arreglo de todos ---- */
+	const deleteTodos = (index) => {
+		const newTodos = [...todos]
+		newTodos.splice(index, 1)
+		setTodos(newTodos)
+		setNoteIndex(noteIndex - 1)
+	}

@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 
-const InputUsername = () => {
+const InputUsername = ({ serUsername }) => {
 
     const [value, setValue] = useState("");
 
+    /* ---- Capturar el valor del input ---- */
     const handleInputChange = (e) => {
         setValue(e.target.value);
         console.log(value)
     }
 
+    /* ---- Enviar los datos al hacer click en el btn ---- */
     const handleClickBtn = () => {
         try {
             // Enviar datos del username 
@@ -31,7 +33,7 @@ const InputUsername = () => {
 
             <button
                 className='submit-username'
-                type="submit"
+                type="button"
                 onClick={handleClickBtn}
             >Submit</button>
 
