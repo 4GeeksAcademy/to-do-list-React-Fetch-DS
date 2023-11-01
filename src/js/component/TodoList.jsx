@@ -36,29 +36,6 @@ const TodoList = () => {
 
 	}
 
-	/*
-		// ---- Añadir task en un nuevo arreglo de todos
-		const addTodos = () => {
-			const newTodos = [...todos]
-			if (task === "") {
-				return;
-			} else {
-				newTodos.push(task)
-				setTodos(newTodos)
-				setTask("")
-				setNoteIndex(noteIndex + 1)
-			}
-		}
-	
-		// ---- Eliminar task en un nuevo arreglo de todos 
-		const deleteTodos = (index) => {
-			const newTodos = [...todos]
-			newTodos.splice(index, 1)
-			setTodos(newTodos)
-			setNoteIndex(noteIndex - 1)
-		}
-	*/
-
 	return (
 		<>
 			{/* Input para añadir notas y enviar su información */}
