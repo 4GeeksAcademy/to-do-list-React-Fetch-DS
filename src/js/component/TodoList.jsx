@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputName from "./inputName"
+import InputName from "./InputName"
 import DeleteAll from "./DeleteAll"
 
 const TodoList = () => {
@@ -41,7 +41,7 @@ const TodoList = () => {
 			{/* Input para añadir notas y enviar su información */}
 			<div className="container-input">
 				<input className="input-To-Do" placeholder="What needs to be done?" type="text" value={task} onChange={(e) => setTask(e.target.value)} />
-				<button className='btn-To-Do' onClick={addTodos}>Add Task</button>
+				<button className='btn-To-Do' onClick={putData}>Add Task</button>
 			</div>
 
 			{/* contenedor notas */}
@@ -55,7 +55,7 @@ const TodoList = () => {
 								<div key={index} className='note'>{task}</div>
 								<i
 									class="item--right fa-regular fa-circle-xmark"
-									onClick={() => deleteTodos(index)}
+									onClick={() => deleteTodo(index)}
 								></i>
 							</div>
 						)
