@@ -58,10 +58,14 @@ input:focus::placeholder {
 }
 
 .note {
-    border-top: lightblue 1px solid;
+    border-bottom: lightblue 1px solid;
     width: 100%;
     padding: 15px 10px;
     color: rgba(0, 0, 0, 0.7);
+}
+
+.container-input {
+    border-bottom: lightblue 1px solid;
 }
 
 .note-index {
@@ -128,15 +132,15 @@ h6 {
 .container-username {
     display: flex;
     justify-content: center;
-    margin: 10px;
+    margin-top: 80px;
 }
 
 .input-username {
     border: rgba(173, 216, 230, 0.5) 1px solid;
-    width: 30%;
+    width: 50%;
     padding: 6px 10px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .submit-username {
@@ -154,11 +158,11 @@ h6 {
 }
 
 .btn-delete-all {
-    width: 50%;
-    min-height: 45px;
+    width: 80%;
+    min-height: 35px;
     border: rgba(173, 216, 230, 0.5) 1px solid;
     font-size: 18px;
-    color: rgba(0, 0, 0, 0.7);
+    color: rgb(115, 115, 115);
     background: rgba(173, 216, 230, 0.2);
     margin: 5px 10px;
     padding: 5px;
@@ -172,4 +176,13 @@ h6 {
     display: flex;
     justify-content: center;
     margin: 25px;
+}
+
+.delete-all-msg {
+    color: rgb(163, 163, 163);
+    font-weight: 300;
+    font-size: 40px;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 40px;
 }

@@ -1,19 +1,30 @@
 import React, { useState } from 'react';
 
-const InputUsername = ({ serUsername }) => {
+const InputUsername = ({ setUsername, setCardUsername, postData }) => {
 
     const [value, setValue] = useState("");
 
     /* ---- Capturar el valor del input ---- */
     const handleInputChange = (e) => {
         setValue(e.target.value);
-        console.log(value)
     }
 
     /* ---- Enviar los datos al hacer click en el btn ---- */
-    const handleClickBtn = () => {
+    const handleClickBtn = async () => {
         try {
-            // Enviar datos del username 
+            if (value !== '') {
+                try {
+                    setCardUsername(true);
+                    setUsername(value);
+                    const sendPost = await postData();
+                    console.log("Sending Data", sendPost);
+                } catch (error) {
+                    console.log("Hubo un error (InputNameClickBtn)", error)
+                }
+
+            } else {
+                alert("Invalid username")
+            }
 
         } catch (error) {
             console.log("Hubo un error", error);
