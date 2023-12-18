@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import DeleteAll from "./DeleteAll";
+import DeleteAll from "./DeleteAll.jsx";
 
 const App = () => {
 

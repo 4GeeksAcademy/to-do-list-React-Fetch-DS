@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 
-const DeleteAll = ({ setTodos, deleteTodo, setUsername, setCardUsername, setBoolean, setTaskInput, setDeleteAll }) => {
+const DeleteAll = ({ setTodos, setUsername, setCardUsername, setBoolean, setTaskInput, setDeleteAll, deleteUser }) => {
 
     const handleDeleteBtn = () => {
         setDeleteAll(true);
         setTimeout(() => {
-            deleteTodo();
+            deleteUser();
             setDeleteAll(false);
             setBoolean(false);
             setTodos([]);
